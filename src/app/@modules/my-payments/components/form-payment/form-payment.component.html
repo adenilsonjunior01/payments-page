@@ -1,0 +1,143 @@
+<form [formGroup]="form">
+  <div class="grid mt-4">
+    <div class="col-6">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_NAME"
+          type="text"
+          pInputText
+          formControlName="name"
+          aria-describedby="name-help"
+          [ngClass]="{ 'ng-invalid ng-dirty': nameControl?.errors?.required && nameControl?.dirty }"
+          class="w-full" />
+        <label for="name">Usuário*</label>
+      </span>
+      <ng-container *ngIf="nameControl?.errors?.required && nameControl?.dirty">
+        <small
+          id="name-help"
+          class="p-error block pt-1"
+          >Usuário é um campo obrigatório.</small
+        >
+      </ng-container>
+    </div>
+
+    <div class="col-6">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_VALUE"
+          type="text"
+          pInputText
+          currencyMask
+          formControlName="value"
+          aria-describedby="valor-help"
+          [ngClass]="{ 'ng-invalid ng-dirty': valorControl?.errors?.required && valorControl?.dirty }"
+          class="w-full" />
+        <label for="valor">Valor*</label>
+      </span>
+      <ng-container *ngIf="valorControl?.errors?.required && valorControl?.dirty">
+        <small
+          id="valor-help"
+          class="p-error block pt-1"
+          >Valor é um campo obrigatório.</small
+        >
+      </ng-container>
+    </div>
+
+    <div class="col-6 pt-3">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_DATA"
+          pInputText
+          type="text"
+          class="w-full"
+          mask="d0/M0/0000"
+          [dropSpecialCharacters]="false"
+          formControlName="date"
+          aria-describedby="data-help"
+          [ngClass]="{ 'ng-invalid ng-dirty': dataControl?.errors?.required && dataControl?.dirty }" />
+        <label for="data">Data*</label>
+      </span>
+      <ng-container *ngIf="dataControl?.errors?.required && dataControl?.dirty">
+        <small
+          id="data-help"
+          class="p-error block pt-1"
+          >Data é um campo obrigatório.</small
+        >
+      </ng-container>
+    </div>
+
+    <div class="col-6 pt-3">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_TITLE"
+          type="text"
+          pInputText
+          formControlName="title"
+          aria-describedby="title-help"
+          class="w-full" />
+        <label for="title">Titulo</label>
+      </span>
+    </div>
+    <div class="col-6 pt-3">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_USERNAME"
+          type="text"
+          pInputText
+          formControlName="username"
+          aria-describedby="username-help"
+          class="w-full" />
+        <label for="username">Username</label>
+      </span>
+    </div>
+
+    <div class="col-12 pt-3">
+      <span class="p-float-label">
+        <input
+          [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_AVATAR"
+          type="text"
+          pInputText
+          formControlName="image"
+          aria-describedby="image-help"
+          class="w-full" />
+        <label for="image">Link Avatar</label>
+      </span>
+    </div>
+
+    <ng-container *ngIf="action === typeAction.EDIT">
+      <div class="col-12 pt-3">
+        <span class="p-float-label">
+          <p-toggleButton
+            [id]="CY_SELECTORS.SELECTOR_BTN_TOGGLE"
+            formControlName="isPayed"
+            onLabel="Pago"
+            offLabel="Em andamento"
+            onIcon="pi pi-check"
+            offIcon="pi pi-times"
+            styleClass="p-button-secondary"
+            [style]="{ width: '10em' }"></p-toggleButton>
+        </span>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="grid justify-content-end mt-5">
+    <div class="col-3">
+      <p-button
+        (click)="closeModal.emit(true)"
+        [id]="CY_SELECTORS.SELECTOR_BTN_CANCEL"
+        type="button"
+        label="Cancelar"
+        styleClass="w-full btn-letter-spacing-1x uppercase p-button-secondary"></p-button>
+    </div>
+    <div class="col-3">
+      <p-button
+        label="Salvar"
+        [id]="CY_SELECTORS.SELECTOR_BTN_SAVE"
+        type="submit"
+        (click)="submitForm.emit(action)"
+        styleClass="w-full btn-letter-spacing-1x uppercase"
+        [disabled]="form.invalid"></p-button>
+    </div>
+  </div>
+</form>

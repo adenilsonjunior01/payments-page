@@ -1,0 +1,94 @@
+<div class="grid pt-6 px-5 my-profile-container">
+  <div class="col-12">
+    <div class="back-page">
+      <i class="pi pi-arrow-left cursor-pointer" (click)="navigateToPayments()"></i>
+      <span class="pl-3">Voltar</span>
+    </div>
+  </div>
+  <div class="col-12">
+    <p-card styleClass="border-round-lg">
+      <div class="grid">
+        <div class="col-12">
+          <h2 class="m-0">Editar Perfil</h2>
+        </div>
+      </div>
+
+      <form class="grid mt-4" [formGroup]="form">
+        <div class="col-6">
+          <span class="p-float-label">
+            <input
+              id="name"
+              type="name"
+              pInputText
+              formControlName="name"
+              aria-describedby="name-help"
+              [ngClass]="{
+                'ng-invalid ng-dirty': nameControl?.errors?.required && nameControl?.dirty
+              }"
+              class="w-full"
+            />
+            <label for="name">Nome</label>
+          </span>
+          <ng-container *ngIf="nameControl?.errors?.required && nameControl?.dirty">
+            <small id="name-help" class="p-error block pt-1">Nome é um campo obrigatório.</small>
+          </ng-container>
+        </div>
+        <div class="col-6">
+          <span class="p-float-label">
+            <input
+              id="email"
+              type="email"
+              pInputText
+              formControlName="email"
+              aria-describedby="email-help"
+              [ngClass]="{
+                'ng-invalid ng-dirty': emailControl?.errors?.required && emailControl?.dirty
+              }"
+              class="w-full"
+            />
+            <label for="email">E-mail</label>
+          </span>
+          <ng-container *ngIf="emailControl?.errors?.required && emailControl?.dirty">
+            <small id="email-help" class="p-error block pt-1">E-mail é um campo obrigatório.</small>
+          </ng-container>
+        </div>
+
+        <div class="col-6 pt-3">
+          <div class="p-inputgroup">
+            <input
+              id="password"
+              [type]="toogleTypeInputPassword ? 'text' : 'password'"
+              pInputText
+              formControlName="password"
+              aria-describedby="password-help"
+              class="w-full border-right-none"
+              [ngClass]="{
+                'ng-invalid ng-dirty': passwordControl?.errors?.required && passwordControl?.dirty
+              }"
+            />
+            <span class="p-inputgroup-addon cursor-pointer" (click)="changeTypeInputPassword()">
+              <img src="assets/images/ic-eyes.svg" alt="Icon Eyes" title="Visualizar password" />
+            </span>
+          </div>
+          <ng-container *ngIf="passwordControl?.errors?.required && passwordControl?.dirty">
+            <small id="password-help" class="p-error block pt-1">Senha é um campo obrigatório.</small>
+          </ng-container>
+        </div>
+
+        <div class="col-12">
+          <div class="grid justify-content-start mt-4">
+            <div class="col-2">
+              <p-button
+                label="Salvar"
+                type="submit"
+                styleClass="w-full btn-letter-spacing-1x uppercase"
+                [disabled]="form.invalid"
+                (click)="submit()"
+              ></p-button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

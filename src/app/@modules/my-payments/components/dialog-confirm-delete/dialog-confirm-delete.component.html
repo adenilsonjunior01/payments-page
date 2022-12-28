@@ -1,0 +1,36 @@
+<div class="grid">
+  <div class="col-12 mt-4">
+    <ul class="list-none m-0">
+      <li>
+        <span>Usuário: {{ payment?.name }} </span>
+      </li>
+      <li class="py-2">
+        <span>Data: {{ payment?.date | date: 'dd/MM/yyyy' }}</span>
+      </li>
+      <li>
+        <span>Valor: {{ payment?.value | currency: 'R$' }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-12">
+    <div class="grid justify-content-center mt-4">
+      <div class="col-5">
+        <p-button
+          [id]="CY_SELECTORS.SELECTOR_BTN_DIALOG_CANCEL"
+          type="button"
+          label="Cancelar"
+          (click)="emitCancelDelte.emit()"
+          styleClass="w-full btn-letter-spacing-1x uppercase p-button-secondary"></p-button>
+      </div>
+      <div class="col-5">
+        <p-button
+          [id]="CY_SELECTORS.SELECTOR_BTN_DIALOG_CONFIRM"
+          label="Confirmar"
+          type="submit"
+          (click)="emitConfirmDelete.emit(true)"
+          styleClass="w-full btn-letter-spacing-1x uppercase"></p-button>
+      </div>
+    </div>
+  </div>
+</div>

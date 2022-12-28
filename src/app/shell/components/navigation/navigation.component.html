@@ -1,0 +1,28 @@
+<nav class="navigation-container p-5 grid block">
+  <div class="flex align-items-center justify-content-between">
+    <div class="navigation-container--logo flex align-items-center">
+      <img src="assets/images/pay-friends-white.svg" alt="Logo - PayFriends" />
+    </div>
+
+    <div class="navigation-container--profile flex align-items-center">
+      <img
+        src="assets/images/img-profile.svg"
+        alt="Perfil"
+        pTooltip="Editar Perfil"
+        (click)="navigateToProfile()"
+        tooltipPosition="bottom"
+        class="cursor-pointer"
+      />
+      <img
+        src="assets/images/ic-exit.svg"
+        class="ml-4 cursor-pointer"
+        alt="Sair"
+        height="20"
+        width="25"
+        pTooltip="Sair"
+        tooltipPosition="bottom"
+        (click)="logout()"
+      />
+    </div>
+  </div>
+</nav>

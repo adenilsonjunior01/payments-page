@@ -1,0 +1,163 @@
+<p-card
+  styleClass="border-round-lg"
+  [formGroup]="form">
+  <div class="grid">
+    <div class="col-12">
+      <div class="flex align-items-center justify-content-between">
+        <div class="flex align-items-center">
+          <span class="p-input-icon-right">
+            <img
+              src="assets/images/ic-search.svg"
+              alt="Search"
+              class="ic-search" />
+            <input
+              [id]="CY_SELECTOR.SELECTOR_INPUT_SEARCH"
+              type="text"
+              pInputText
+              class="p-inputtext"
+              placeholder="Pesquisar por usuário"
+              [formControl]="querySearch" />
+          </span>
+          <p-button
+            (click)="listenerQuerySearch()"
+            styleClass="p-button-raised btn-filter p-button ml-4">
+            <img
+              src="assets/images/ic-filter.svg"
+              alt="Filter" />
+            <span class="ml-2 text-color">Filtro</span>
+          </p-button>
+        </div>
+        <ng-container *ngIf="payments?.length">
+          <p-paginator
+            [rows]="2"
+            [totalRecords]="totalRecords"
+            [rowsPerPageOptions]="[10, 20, 30]"
+            (onPageChange)="onPageChange($event)"></p-paginator>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <p-table
+        [value]="payments"
+        styleClass="p-datatable-striped"
+        responsiveLayout="scroll"
+        [id]="CY_SELECTOR.SELECTOR_TABLE_PAYMENTS">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name"></th>
+            <th
+              pSortableColumn="name"
+              [id]="CY_SELECTOR.SELECTOR_ORDER_BY_USER">
+              <div class="flex align-items-center">
+                <span>Usuário</span>
+                <img
+                  class="pl-2"
+                  src="assets/images/ic-sort.svg"
+                  alt="Arrow Sort" />
+              </div>
+            </th>
+            <th pSortableColumn="title">
+              <div class="flex align-items-center">
+                <span>Título</span>
+                <img
+                  class="pl-2"
+                  src="assets/images/ic-sort.svg"
+                  alt="Arrow Sort" />
+              </div>
+            </th>
+
+            <th pSortableColumn="date">
+              <div class="flex align-items-center">
+                <span>Data</span>
+                <img
+                  class="pl-2"
+                  src="assets/images/ic-sort.svg"
+                  alt="Arrow Sort" />
+              </div>
+            </th>
+            <th pSortableColumn="value">
+              <div class="flex align-items-center">
+                <span>Valor</span>
+                <img
+                  class="pl-2"
+                  src="assets/images/ic-sort.svg"
+                  alt="Arrow Sort" />
+              </div>
+            </th>
+            <th pSortableColumn="isPayed">
+              <div class="flex align-items-center">
+                <span>Pago</span>
+                <img
+                  class="pl-2"
+                  src="assets/images/ic-sort.svg"
+                  alt="Arrow Sort" />
+              </div>
+            </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template
+          pTemplate="body"
+          let-payment>
+          <tr>
+            <td>
+              <div class="tr-payments">
+                <img
+                  width="40"
+                  height="40"
+                  [src]="payment.image"
+                  alt="Avatar" />
+              </div>
+            </td>
+            <td>
+              <div class="tr-payments">
+                <p class="mb-2 mt-0">{{ payment.name }}</p>
+                <span> {{ payment.username }} </span>
+              </div>
+            </td>
+            <td>
+              <div>
+                <p class="mb-2 mt-0">{{ payment.title }}</p>
+              </div>
+            </td>
+            <td>
+              <div class="tr-payments">
+                <p class="mb-2">{{ payment.date | date: 'dd/MM/yyyy' }}</p>
+                <span> {{ payment.date | date: 'hh:MM a' }}</span>
+              </div>
+              {{ payment.category }}
+            </td>
+            <td>
+              <div class="tr-payments">
+                <p>{{ payment.value | currency: 'R$' }}</p>
+              </div>
+            </td>
+            <td>
+              <p-badge
+                [value]="payment.isPayed ? 'Pago' : 'Em processamento'"
+                [severity]="payment.isPayed ? 'success' : 'warning'"></p-badge>
+            </td>
+
+            <td>
+              <div class="flex align-items-center justify-content-end">
+                <img
+                  [id]="CY_SELECTOR.SELECT_BTN_EDIT_PAYMENT"
+                  src="assets/images/ic-edit.svg"
+                  alt="Edit"
+                  (click)="updateUser(payment)"
+                  class="pr-4 cursor-pointer" />
+                <img
+                  [id]="CY_SELECTOR.SELECT_BTN_DELETE_PAYMENT"
+                  src="assets/images/ic-remove.svg"
+                  alt="Remove"
+                  (click)="confirmDelete.emit(payment)"
+                  class="pr-4 cursor-pointer" />
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</p-card>

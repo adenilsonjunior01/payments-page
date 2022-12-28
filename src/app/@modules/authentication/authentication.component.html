@@ -1,0 +1,81 @@
+<main class="auth-container">
+  <section class="grid h-full">
+    <div class="col-12 md:col-4 auth-login flex align-items-center">
+      <form autocomplete="off" [formGroup]="form" (ngSubmit)="autenticate()">
+        <div class="grid p-4 md:p-7">
+          <div class="col-12">
+            <img src="assets/images/pay-friends.svg" alt="PayFriends" />
+          </div>
+
+          <div class="col-12 auth-login--welcome pb-4">
+            <h2 class="m-0 font-semibold" data-cy="title-login">Bem vindo de volta</h2>
+          </div>
+
+          <div class="col-12 pb-4" *ngIf="validLogin">
+            <p-message
+              severity="error"
+              styleClass="w-full justify-content-start"
+              text="Usuário ou senha inválidos."
+            ></p-message>
+          </div>
+
+          <div class="col-12">
+            <span class="p-float-label">
+              <input
+                [id]="CY_SELECTOR.SELECTOR_EMAIL"
+                type="email"
+                pInputText
+                formControlName="email"
+                aria-describedby="email-help"
+                [ngClass]="{
+                  'ng-invalid ng-dirty': emailControl?.errors?.required && emailControl?.dirty
+                }"
+                class="w-full"
+              />
+              <label for="email">E-mail</label>
+            </span>
+            <ng-container *ngIf="emailControl?.errors?.required && emailControl?.dirty">
+              <small id="email-help" class="p-error block pt-1">E-mail é um campo obrigatório.</small>
+            </ng-container>
+          </div>
+
+          <div class="col-12 pt-3">
+            <div class="p-inputgroup">
+              <input
+                [id]="CY_SELECTOR.SELECTOR_PASSWORD"
+                [type]="toogleTypeInputPassword ? 'text' : 'password'"
+                pInputText
+                placeholder="Senha"
+                formControlName="senha"
+                aria-describedby="senha-help"
+                class="w-full border-right-none"
+                [ngClass]="{
+                  'ng-invalid ng-dirty': senhaControl?.errors?.required && senhaControl?.dirty
+                }"
+              />
+              <span class="p-inputgroup-addon cursor-pointer" (click)="changeTypeInputPassword()">
+                <img src="assets/images/ic-eyes.svg" alt="Icon Eyes" title="Visualizar senha" />
+              </span>
+            </div>
+            <ng-container *ngIf="senhaControl?.errors?.required && senhaControl?.dirty">
+              <small id="senha-help" class="p-error block pt-1">Senha é um campo obrigatório.</small>
+            </ng-container>
+          </div>
+
+          <div class="col-12 pt-4">
+            <p-button
+              label="Entrar"
+              [id]="CY_SELECTOR.SELECTOR_BTN_LOGIN"
+              type="submit"
+              styleClass="w-full btn-letter-spacing-1x uppercase"
+              [disabled]="form.invalid"
+            ></p-button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-8 auth-banner hidden md:flex align-items-center justify-content-center">
+      <img src="assets/images/banner-login.svg" alt="Banner" />
+    </div>
+  </section>
+</main>

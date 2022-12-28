@@ -1,0 +1,9 @@
+.my-payments-container {
+
+  &--title h1 {
+    font-family: var(--pp-font-family-montserrat) !important;
+    color: var(--pp-black-2);
+    font-weight: 36px;
+    margin: 0;
+  }
+}
