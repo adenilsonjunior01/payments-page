@@ -1,13 +1,23 @@
-import { Router } from '@angular/router';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
-import { TitleCasePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/@models/interfaces';
+import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
 
 @Component({
   selector: 'app-navigation',
+  standalone: true,
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  imports: [
+    CommonModule
+  ],
+  styles: [
+    `
+    .navigation-container {
+      background-color: var(--pp-blue-2);
+    }
+    `
+  ]
 })
 export class NavigationComponent implements OnInit {
   public user: IUser;
@@ -17,7 +27,7 @@ export class NavigationComponent implements OnInit {
   public ngOnInit(): void {
     this.getUser();
   }
-  
+
   public getUser(): void {
     this.user = this.credentials.user;
   }

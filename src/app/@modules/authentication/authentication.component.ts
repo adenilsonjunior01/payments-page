@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ButtonModule } from 'primeng/button';
@@ -13,7 +13,6 @@ import { IUser } from 'src/app/@models/interfaces';
 import { AuthService } from 'src/app/@services/auth/auth.service';
 import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
 import { CY_SELECTORS } from 'src/app/@shared/enums';
-import { SharedModule } from 'src/app/@shared/shared.module';
 
 @UntilDestroy()
 @Component({
@@ -23,11 +22,14 @@ import { SharedModule } from 'src/app/@shared/shared.module';
   imports: [
     CommonModule,
     InputTextModule,
-    SharedModule,
+    ReactiveFormsModule,
     ButtonModule,
     PasswordModule,
     MessagesModule,
     MessageModule
+  ],
+  providers: [
+    AuthService
   ],
   styles: [
     `

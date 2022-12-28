@@ -9,7 +9,6 @@ import { NgxMaskModule } from 'ngx-mask';
 
 import { ROUTES_ADMIN } from './app/app-routing';
 import { AppComponent } from './app/app.component';
-import { ShellModule } from './app/shell/shell.module';
 import { environment } from './environments/environment';
 
 registerLocaleData(localePt);
@@ -25,8 +24,7 @@ bootstrapApplication(AppComponent, {
       NgxMaskModule.forRoot(),
       BrowserModule,
       HttpClientModule,
-      BrowserAnimationsModule,
-      ShellModule
+      BrowserAnimationsModule
   ]),
   { provide: LOCALE_ID, useValue: 'pt-BR' },
 ]
