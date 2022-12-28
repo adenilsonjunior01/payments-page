@@ -1,6 +1,11 @@
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { BadgeModule } from 'primeng/badge';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { PaginatorModule } from 'primeng/paginator';
+import { TableModule } from 'primeng/table';
 import { debounceTime } from 'rxjs';
 import { TypeActionEnum } from 'src/app/@enums';
 import { IPayments } from 'src/app/@models/interfaces/payments.interface';
@@ -8,8 +13,40 @@ import { CY_SELECTORS } from 'src/app/@shared/enums';
 
 @Component({
   selector: 'app-table-payments',
+  standalone: true,
   templateUrl: './table-payments.component.html',
-  styleUrls: ['./table-payments.component.scss']
+  imports: [
+    CommonModule,
+    CardModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    PaginatorModule,
+    TableModule,
+    BadgeModule
+  ],
+  styles: [
+    `
+    .ic-search {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      margin-top: -.5rem;
+    }
+
+    .tr-payments {
+      p {
+        font-size: var(--pp-font-size-14);
+        color: var(--pp-black-2);
+      }
+
+      span {
+        padding-top: 15px;
+        color: var(--pp-gray-3);
+        font-size: var(--pp-font-size-12);
+      }
+    }
+    `
+  ]
 })
 export class TablePaymentsComponent implements OnInit, OnChanges {
   @Input() public form!: UntypedFormGroup;

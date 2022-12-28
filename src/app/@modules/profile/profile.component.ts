@@ -1,16 +1,45 @@
-import { finalize, take } from 'rxjs';
-import { Component, OnInit } from "@angular/core";
-import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { IUser } from "src/app/@models/interfaces";
-import { CredentialsService } from "src/app/@services/credentials/credentials.service";
-import { ProfileService } from "src/app/@services/profile/profile.service";
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+import { finalize, take } from 'rxjs';
+import { IUser } from 'src/app/@models/interfaces';
+import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
+import { ProfileService } from 'src/app/@services/profile/profile.service';
 
 @Component({
   selector: "app-profile",
+  standalone: true,
   templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.scss"],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    CardModule,
+    InputTextModule,
+    ButtonModule,
+    ToastModule
+  ],
+  providers: [MessageService],
+  styles: [
+    `
+    .my-profile-container {
+
+    .back-page {
+      color: var(--pp-black-2);
+      font-size: 18px;
+
+      span {
+        font-weight: 500 !important;
+      }
+      }
+    }
+    `
+  ]
 })
 export class ProfileComponent implements OnInit {
   public form: UntypedFormGroup;
@@ -18,8 +47,8 @@ export class ProfileComponent implements OnInit {
   public loading: boolean;
 
   constructor(
-    private router: Router, 
-    private readonly formBuilder: UntypedFormBuilder, 
+    private router: Router,
+    private readonly formBuilder: UntypedFormBuilder,
     private credentials: CredentialsService,
     private profileService: ProfileService,
     private messageService: MessageService) {

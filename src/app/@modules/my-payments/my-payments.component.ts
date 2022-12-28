@@ -1,8 +1,10 @@
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 import { Message } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
 import { finalize, take } from 'rxjs';
 import { CY_SELECTORS, STRINGS } from 'src/app/@shared/enums';
 import { Utils } from 'src/app/@shared/utils/utils';
@@ -10,10 +12,29 @@ import { Utils } from 'src/app/@shared/utils/utils';
 import { TypeActionEnum } from './../../@enums/type-action.enum';
 import { IPayments } from './../../@models/interfaces/payments.interface';
 import { PaymentsService } from './../../@services/payments/payments.service';
+import { AddPaymentComponent } from './components/add-payment/add-payment.component';
+import { DialogConfirmDeleteComponent } from './components/dialog-confirm-delete/dialog-confirm-delete.component';
+import { FormPaymentComponent } from './components/form-payment/form-payment.component';
+import { TablePaymentsComponent } from './components/table-payments/table-payments.component';
+
 @Component({
   selector: 'app-my-payments',
+  standalone: true,
   templateUrl: './my-payments.component.html',
-  styleUrls: ['./my-payments.component.scss']
+  styleUrls: ['./my-payments.component.scss'],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AddPaymentComponent,
+    DialogConfirmDeleteComponent,
+    FormPaymentComponent,
+    TablePaymentsComponent,
+    DialogModule,
+    NgxMaskModule,
+  ],
+  providers: [
+    { provide: DatePipe }
+  ]
 })
 export class MyPaymentsComponent implements OnInit {
   public form!: UntypedFormGroup;
@@ -34,8 +55,7 @@ export class MyPaymentsComponent implements OnInit {
 
   constructor(
     private formBuilder: UntypedFormBuilder,
-    private paymentService: PaymentsService,
-    private datePipe: DatePipe) {
+    private paymentService: PaymentsService) {
 
     this.titleDialog = STRINGS.TITLE_ADD_PAYMENTS;
     this.display = false;

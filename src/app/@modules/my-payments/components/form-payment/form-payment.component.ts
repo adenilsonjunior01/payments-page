@@ -1,12 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { AbstractControl, UntypedFormGroup } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TypeActionEnum } from 'src/app/@enums';
 import { CY_SELECTORS } from 'src/app/@shared/enums';
 
 @Component({
   selector: 'app-form-payment',
+  standalone: true,
   templateUrl: './form-payment.component.html',
-  styleUrls: ['./form-payment.component.scss'],
+  imports: [
+    CommonModule,
+    InputTextModule,
+    ToggleButtonModule,
+    NgxMaskModule,
+    ReactiveFormsModule,
+    ButtonModule
+  ]
 })
 export class FormPaymentComponent implements OnInit {
   @Input() public action!: TypeActionEnum;
