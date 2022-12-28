@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:dev": "concurrently --kill-others \"npm run start\" \"npm run api\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -25,12 +26,13 @@
     "@angular/platform-browser": "^15.0.4",
     "@angular/platform-browser-dynamic": "^15.0.4",
     "@angular/router": "^15.0.4",
+    "concurrently": "^7.6.0",
     "font-awesome": "^4.7.0",
     "ng2-currency-mask": "^13.0.3",
     "ngx-mask": "^13.1.15",
     "primeflex": "^3.2.1",
-    "primeicons": "5.0.0",
-    "primeng": "^14.0.2",
+    "primeicons": "^6.0.1",
+    "primeng": "^14.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
