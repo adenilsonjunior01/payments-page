@@ -1,6 +1,6 @@
-import { IUser } from 'src/app/@models/interfaces';
 import { Injectable } from '@angular/core';
 import { ECredentialsStorage } from 'src/app/@enums';
+import { IUser } from 'src/app/@shared/models/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CredentialsService {
   public local: Storage;
   public session: Storage;
 
-  constructor() { 
+  constructor() {
     this.local = window.localStorage;
     this.session = window.sessionStorage;
   }

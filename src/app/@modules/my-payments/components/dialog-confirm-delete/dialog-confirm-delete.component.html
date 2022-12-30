@@ -1,22 +1,24 @@
 <div class="grid">
   <div class="col-12 mt-4">
-    <ul class="list-none m-0">
-      <li>
-        <span>Usuário: {{ payment?.name }} </span>
+    <ul class="list-none m-0" role="navigation">
+      <li role="listitem" title="Nome do usuário relacionado ao pagamento" tabindex="0">
+        <span role="heading">Usuário: {{ payment?.name }} </span>
       </li>
-      <li class="py-2">
+      <li class="py-2" role="listitem" title="Data do pagamento" tabindex="0">
         <span>Data: {{ payment?.date | date: 'dd/MM/yyyy' }}</span>
       </li>
-      <li>
+      <li role="listitem" title="Valor do pagamento" tabindex="0">
         <span>Valor: {{ payment?.value | currency: 'R$' }}</span>
       </li>
     </ul>
   </div>
 
+
   <div class="col-12">
     <div class="grid justify-content-center mt-4">
       <div class="col-5">
         <p-button
+          aria-label="Cancelar"
           [id]="CY_SELECTORS.SELECTOR_BTN_DIALOG_CANCEL"
           type="button"
           label="Cancelar"
@@ -25,6 +27,7 @@
       </div>
       <div class="col-5">
         <p-button
+          aria-label="Confirmar"
           [id]="CY_SELECTORS.SELECTOR_BTN_DIALOG_CONFIRM"
           label="Confirmar"
           type="submit"

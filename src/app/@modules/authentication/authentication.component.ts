@@ -9,10 +9,12 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { finalize } from 'rxjs';
-import { IUser } from 'src/app/@models/interfaces';
 import { AuthService } from 'src/app/@services/auth/auth.service';
 import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
+import { CurrencyDirective } from 'src/app/@shared/directives/currency/currency.directive';
+import { FocusTrapDirective } from 'src/app/@shared/directives/focus-trap/focus-trap.directive';
 import { CY_SELECTORS } from 'src/app/@shared/enums';
+import { IUser } from 'src/app/@shared/models/interfaces';
 
 @UntilDestroy()
 @Component({
@@ -26,7 +28,9 @@ import { CY_SELECTORS } from 'src/app/@shared/enums';
     ButtonModule,
     PasswordModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    FocusTrapDirective,
+    CurrencyDirective
   ],
   providers: [
     AuthService
@@ -57,7 +61,13 @@ import { CY_SELECTORS } from 'src/app/@shared/enums';
   ]
 })
 export class AuthenticationComponent implements OnInit {
-  public form!: UntypedFormGroup;
+  public form: UntypedFormGroup = this.formBuilder.group({
+    // email: [null, [ Validators.required, Validators.email ]],
+    // senha: [null, [ Validators.required ]]
+    email: ['usuario@gmail.com', [ Validators.required, Validators.email ]],
+    senha: ['usuario', [ Validators.required ]]
+  });
+
   public toogleTypeInputPassword: boolean;
   public loading: boolean;
   public validLogin: boolean;
@@ -74,17 +84,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.createForm();
-    this.autenticate();
-  }
-
-  public createForm(): void {
-    this.form = this.formBuilder.group({
-      // email: [null, [ Validators.required, Validators.email ]],
-      // senha: [null, [ Validators.required ]]
-      email: ['usuario@gmail.com', [ Validators.required, Validators.email ]],
-      senha: ['usuario', [ Validators.required ]]
-    });
   }
 
   public autenticate(): void {

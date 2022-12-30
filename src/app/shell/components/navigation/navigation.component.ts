@@ -1,8 +1,8 @@
 import { CommonModule, TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUser } from 'src/app/@models/interfaces';
 import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
+import { IUser } from 'src/app/@shared/models/interfaces';
 
 @Component({
   selector: 'app-navigation',

@@ -8,8 +8,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { debounceTime } from 'rxjs';
 import { TypeActionEnum } from 'src/app/@enums';
-import { IPayments } from 'src/app/@models/interfaces/payments.interface';
 import { CY_SELECTORS } from 'src/app/@shared/enums';
+import { IPayments } from 'src/app/@shared/models/interfaces/payments.interface';
 
 @Component({
   selector: 'app-table-payments',
@@ -22,7 +22,7 @@ import { CY_SELECTORS } from 'src/app/@shared/enums';
     ButtonModule,
     PaginatorModule,
     TableModule,
-    BadgeModule
+    BadgeModule,
   ],
   styles: [
     `

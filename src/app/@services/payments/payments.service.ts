@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPayments } from 'src/app/@models/interfaces/payments.interface';
+import { IPayments } from 'src/app/@shared/models/interfaces/payments.interface';
 import { environment } from 'src/environments/environment';
 
 const routes = {

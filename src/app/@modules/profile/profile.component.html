@@ -1,7 +1,12 @@
 <div class="grid pt-6 px-5 my-profile-container">
   <div class="col-12">
-    <div class="back-page">
-      <i class="pi pi-arrow-left cursor-pointer" (click)="navigateToPayments()"></i>
+    <div class="back-page" >
+      <i
+        class="pi pi-arrow-left cursor-pointer"
+        (click)="navigateToPayments()"
+        role="button"
+        tabindex="0"
+        aria-label="Voltar para a página de pagamentos"></i>
       <span class="pl-3">Voltar</span>
     </div>
   </div>
@@ -9,14 +14,15 @@
     <p-card styleClass="border-round-lg">
       <div class="grid">
         <div class="col-12">
-          <h2 class="m-0">Editar Perfil</h2>
+          <h2 class="m-0" id="form-title">Editar Perfil</h2>
         </div>
       </div>
 
-      <form class="grid mt-4" [formGroup]="form">
+      <form class="grid mt-4" [formGroup]="form" aria-labelledby="form-title" pAutoFocus>
         <div class="col-6">
           <span class="p-float-label">
             <input
+              [autofocus]="true"
               id="name"
               type="name"
               pInputText
@@ -67,7 +73,7 @@
               }"
             />
             <span class="p-inputgroup-addon cursor-pointer" (click)="changeTypeInputPassword()">
-              <img src="assets/images/ic-eyes.svg" alt="Icon Eyes" title="Visualizar password" />
+              <img src="assets/images/ic-eyes.svg" alt="Icon Eyes" title="Mostrar/ocultar senha" />
             </span>
           </div>
           <ng-container *ngIf="passwordControl?.errors?.required && passwordControl?.dirty">
@@ -81,6 +87,9 @@
               <p-button
                 label="Salvar"
                 type="submit"
+                tabindex="0"
+                role="button"
+                aria-label="Salvar alterações"
                 styleClass="w-full btn-letter-spacing-1x uppercase"
                 [disabled]="form.invalid"
                 (click)="submit()"

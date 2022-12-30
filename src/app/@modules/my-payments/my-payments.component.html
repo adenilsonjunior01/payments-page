@@ -1,8 +1,9 @@
-<div class="grid my-payments-container">
+<div class="grid my-payments-container" role="region" [attr.aria-labelledby]="CY_SELECTOR.SELECTOR_TITLE_MY_PAYMENTS">
   <div class="col-12 pt-6 px-5">
     <div class="grid">
       <div class="col-12 my-payments-container--title">
         <h1
+          tabindex="0"
           class="font-bold"
           [id]="CY_SELECTOR.SELECTOR_TITLE_MY_PAYMENTS">
           {{ STRINGS.TITLE_MY_PAYMENTS }}
@@ -10,13 +11,14 @@
       </div>
 
       <div class="col-12 sm:col-3 sm:col-offset-9 col-offset-0">
-        <app-add-payment (showModal)="showModal($event)"></app-add-payment>
+        <app-add-payment (showModal)="showModal($event)" aria-label="Adicionar novo pagamento"></app-add-payment>
       </div>
     </div>
   </div>
 
   <div class="col-12 px-5 mb-6">
     <app-table-payments
+      [attr.aria-labelledby]="CY_SELECTOR.SELECTOR_TITLE_MY_PAYMENTS"
       (showModal)="showModal($event)"
       (confirmDelete)="getPaymentObject($event)"
       [form]="form"
@@ -33,6 +35,8 @@
   [draggable]="false"
   [resizable]="false">
   <app-form-payment
+    [titleForm]="titleDialog"
+    appFocusTrap
     [form]="form"
     (closeModal)="showModal($event)"
     (submitForm)="handleEventModal($event)"

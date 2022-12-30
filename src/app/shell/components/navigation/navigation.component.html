@@ -1,28 +1,46 @@
-<nav class="navigation-container p-5 grid block">
+<nav class="navigation-container p-5 grid block" role="menubar" title="Menu de navegação">
   <div class="flex align-items-center justify-content-between">
     <div class="navigation-container--logo flex align-items-center">
-      <img src="assets/images/pay-friends-white.svg" alt="Logo - PayFriends" />
+      <img src="assets/images/pay-friends-white.svg" id="logo" alt="Logomarca PayFriends" tabindex="0"/>
     </div>
 
     <div class="navigation-container--profile flex align-items-center">
-      <img
-        src="assets/images/img-profile.svg"
-        alt="Perfil"
-        pTooltip="Editar Perfil"
+      <button
+        id="btn-editar-perfil"
+        type="button"
+        class="btn-none"
+        title="Icon de perfil"
         (click)="navigateToProfile()"
-        tooltipPosition="bottom"
-        class="cursor-pointer"
-      />
-      <img
-        src="assets/images/ic-exit.svg"
-        class="ml-4 cursor-pointer"
-        alt="Sair"
-        height="20"
-        width="25"
-        pTooltip="Sair"
-        tooltipPosition="bottom"
-        (click)="logout()"
-      />
+        aria-label="Editar Perfil"
+        tabindex="0"
+      >
+        <img
+          src="assets/images/img-profile.svg"
+          alt="Icone de perfil"
+          pTooltip="Editar Perfil"
+          tooltipPosition="bottom"
+          class="cursor-pointer"
+        />
+      </button>
+      <button
+        id="btn-logout"
+        type="button"
+        class="btn-none"
+        title="Icon de saída"
+        aria-label="Sair da aplicação"
+        tabindex="0"
+      >
+        <img
+          src="assets/images/ic-exit.svg"
+          class="ml-4 cursor-pointer"
+          alt="Icone de saída"
+          height="20"
+          width="25"
+          pTooltip="Sair"
+          tooltipPosition="bottom"
+          (click)="logout()"
+        />
+      </button>
     </div>
   </div>
 </nav>

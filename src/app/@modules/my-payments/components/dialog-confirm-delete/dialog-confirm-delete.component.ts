@@ -2,8 +2,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CURRENCY_MASK_CONFIG, CurrencyMaskConfig } from 'ng2-currency-mask';
 import { ButtonModule } from 'primeng/button';
-import { IPayments } from 'src/app/@models/interfaces/payments.interface';
 import { CY_SELECTORS } from 'src/app/@shared/enums';
+import { IPayments } from 'src/app/@shared/models/interfaces/payments.interface';
 
 
 const CustomCurrencyMaskConfig: CurrencyMaskConfig = {

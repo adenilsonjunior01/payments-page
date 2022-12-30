@@ -6,11 +6,12 @@ import { NgxMaskModule } from 'ngx-mask';
 import { Message } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { finalize, take } from 'rxjs';
+import { FocusTrapDirective } from 'src/app/@shared/directives/focus-trap/focus-trap.directive';
 import { CY_SELECTORS, STRINGS } from 'src/app/@shared/enums';
 import { Utils } from 'src/app/@shared/utils/utils';
 
+import { IPayments } from '../../@shared/models/interfaces/payments.interface';
 import { TypeActionEnum } from './../../@enums/type-action.enum';
-import { IPayments } from './../../@models/interfaces/payments.interface';
 import { PaymentsService } from './../../@services/payments/payments.service';
 import { AddPaymentComponent } from './components/add-payment/add-payment.component';
 import { DialogConfirmDeleteComponent } from './components/dialog-confirm-delete/dialog-confirm-delete.component';
@@ -31,6 +32,7 @@ import { TablePaymentsComponent } from './components/table-payments/table-paymen
     TablePaymentsComponent,
     DialogModule,
     NgxMaskModule,
+    FocusTrapDirective
   ],
   providers: [
     { provide: DatePipe }

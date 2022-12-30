@@ -1,16 +1,24 @@
-<form [formGroup]="form">
+<form [formGroup]="form" pAutoFocus [title]="titleForm">
   <div class="grid mt-4">
     <div class="col-6">
-      <span class="p-float-label">
+      <span
+        class="p-float-label"
+        >
         <input
           [id]="CY_SELECTORS.SELECTOR_INPUT_FORM_NAME"
           type="text"
+          [autofocus]="true"
+          aria-label="Usuário"
+          aria-describedby="name-help"
+          aria-required="true"
+          [attr.aria-invalid]="form.get('name').invalid"
           pInputText
           formControlName="name"
-          aria-describedby="name-help"
           [ngClass]="{ 'ng-invalid ng-dirty': nameControl?.errors?.required && nameControl?.dirty }"
           class="w-full" />
-        <label for="name">Usuário*</label>
+        <label
+          for="name"
+          >Usuário*</label>
       </span>
       <ng-container *ngIf="nameControl?.errors?.required && nameControl?.dirty">
         <small
@@ -30,6 +38,9 @@
           currencyMask
           formControlName="value"
           aria-describedby="valor-help"
+          aria-label="Valor do pagamento"
+          aria-required="true"
+          [attr.aria-invalid]="form.get('value').invalid"
           [ngClass]="{ 'ng-invalid ng-dirty': valorControl?.errors?.required && valorControl?.dirty }"
           class="w-full" />
         <label for="valor">Valor*</label>
@@ -53,9 +64,12 @@
           mask="d0/M0/0000"
           [dropSpecialCharacters]="false"
           formControlName="date"
+          aria-label="Data do Pagamento"
           aria-describedby="data-help"
+          aria-required="true"
+          [attr.aria-invalid]="form.get('date').invalid"
           [ngClass]="{ 'ng-invalid ng-dirty': dataControl?.errors?.required && dataControl?.dirty }" />
-        <label for="data">Data*</label>
+        <label for="data" >Data*</label>
       </span>
       <ng-container *ngIf="dataControl?.errors?.required && dataControl?.dirty">
         <small
@@ -74,8 +88,11 @@
           pInputText
           formControlName="title"
           aria-describedby="title-help"
+          aria-label="Título do pagamento"
+          aria-required="true"
+          [attr.aria-invalid]="form.get('title').invalid"
           class="w-full" />
-        <label for="title">Titulo</label>
+        <label for="title">Título</label>
       </span>
     </div>
     <div class="col-6 pt-3">
@@ -85,7 +102,7 @@
           type="text"
           pInputText
           formControlName="username"
-          aria-describedby="username-help"
+          aria-label="Nome do usuário"
           class="w-full" />
         <label for="username">Username</label>
       </span>
@@ -98,7 +115,7 @@
           type="text"
           pInputText
           formControlName="image"
-          aria-describedby="image-help"
+          aria-label="Link para o Avatar"
           class="w-full" />
         <label for="image">Link Avatar</label>
       </span>

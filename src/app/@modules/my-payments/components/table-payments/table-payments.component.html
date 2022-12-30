@@ -5,27 +5,31 @@
     <div class="col-12">
       <div class="flex align-items-center justify-content-between">
         <div class="flex align-items-center">
-          <span class="p-input-icon-right">
-            <img
-              src="assets/images/ic-search.svg"
-              alt="Search"
-              class="ic-search" />
-            <input
-              [id]="CY_SELECTOR.SELECTOR_INPUT_SEARCH"
-              type="text"
-              pInputText
-              class="p-inputtext"
-              placeholder="Pesquisar por usuário"
-              [formControl]="querySearch" />
-          </span>
-          <p-button
-            (click)="listenerQuerySearch()"
-            styleClass="p-button-raised btn-filter p-button ml-4">
-            <img
-              src="assets/images/ic-filter.svg"
-              alt="Filter" />
-            <span class="ml-2 text-color">Filtro</span>
-          </p-button>
+          <form>
+            <span class="p-input-icon-right">
+              <img
+                src="assets/images/ic-search.svg"
+                alt="Search"
+                class="ic-search" />
+              <input
+                [id]="CY_SELECTOR.SELECTOR_INPUT_SEARCH"
+                type="text"
+                role="search"
+                pInputText
+                class="p-inputtext"
+                placeholder="Pesquisar por usuário"
+                [formControl]="querySearch" />
+            </span>
+            <p-button
+              (click)="listenerQuerySearch()"
+              tabindex="0"
+              styleClass="p-button-raised btn-filter p-button ml-4">
+              <img
+                src="assets/images/ic-filter.svg"
+                alt="Filter" />
+              <span class="ml-2 text-color">Filtro</span>
+            </p-button>
+          </form>
         </div>
         <ng-container *ngIf="payments?.length">
           <p-paginator
@@ -141,18 +145,20 @@
 
             <td>
               <div class="flex align-items-center justify-content-end">
-                <img
-                  [id]="CY_SELECTOR.SELECT_BTN_EDIT_PAYMENT"
-                  src="assets/images/ic-edit.svg"
-                  alt="Edit"
-                  (click)="updateUser(payment)"
-                  class="pr-4 cursor-pointer" />
-                <img
-                  [id]="CY_SELECTOR.SELECT_BTN_DELETE_PAYMENT"
-                  src="assets/images/ic-remove.svg"
-                  alt="Remove"
-                  (click)="confirmDelete.emit(payment)"
-                  class="pr-4 cursor-pointer" />
+                <button type="button" (click)="updateUser(payment)" class="btn-none mr-4 p-1">
+                  <img
+                    [id]="CY_SELECTOR.SELECT_BTN_EDIT_PAYMENT"
+                    src="assets/images/ic-edit.svg"
+                    alt="Icone de edição"/>
+                </button>
+
+                <button type="button" (click)="confirmDelete.emit(payment)" class="btn-none">
+                  <img
+                    [id]="CY_SELECTOR.SELECT_BTN_DELETE_PAYMENT"
+                    src="assets/images/ic-remove.svg"
+                    alt="Icone de exclusão"
+                    />
+                </button>
               </div>
             </td>
           </tr>

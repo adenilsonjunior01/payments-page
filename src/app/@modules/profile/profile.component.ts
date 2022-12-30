@@ -3,14 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { AutoFocusModule } from 'primeng/autofocus';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { finalize, take } from 'rxjs';
-import { IUser } from 'src/app/@models/interfaces';
 import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
 import { ProfileService } from 'src/app/@services/profile/profile.service';
+import { IUser } from 'src/app/@shared/models/interfaces';
 
 @Component({
   selector: "app-profile",
@@ -22,7 +23,8 @@ import { ProfileService } from 'src/app/@services/profile/profile.service';
     CardModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    AutoFocusModule
   ],
   providers: [MessageService],
   styles: [

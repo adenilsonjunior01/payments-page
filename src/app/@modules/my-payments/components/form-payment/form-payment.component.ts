@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, ReactiveFormsModule, UntypedFormGroup } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { AutoFocusModule } from 'primeng/autofocus';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToggleButtonModule } from 'primeng/togglebutton';
@@ -18,17 +19,19 @@ import { CY_SELECTORS } from 'src/app/@shared/enums';
     ToggleButtonModule,
     NgxMaskModule,
     ReactiveFormsModule,
-    ButtonModule
+    ButtonModule,
+    AutoFocusModule
   ]
 })
 export class FormPaymentComponent implements OnInit {
   @Input() public action!: TypeActionEnum;
   @Input() public form!: UntypedFormGroup;
+  @Input() public titleForm: string;
   @Output() public closeModal = new EventEmitter<any>();
   @Output() public submitForm = new EventEmitter<TypeActionEnum>();
 
   public typeAction = TypeActionEnum;
-  public readonly CY_SELECTORS = CY_SELECTORS
+  public readonly CY_SELECTORS = CY_SELECTORS;
 
   constructor() {
   }
