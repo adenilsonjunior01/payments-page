@@ -7,6 +7,7 @@
     "start:dev": "concurrently --kill-others \"npm run start\" \"npm run api\"",
     "build": "ng build",
     "test": "npx jest",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "api": "json-server --watch db.json",

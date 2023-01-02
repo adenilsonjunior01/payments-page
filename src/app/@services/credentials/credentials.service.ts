@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ECredentialsStorage } from 'src/app/@enums';
 import { IUser } from 'src/app/@shared/models/interfaces';
+
+import { ECredentialsStorage } from './../../@enums/credentials-storage.enum';
 
 @Injectable({
   providedIn: 'root'

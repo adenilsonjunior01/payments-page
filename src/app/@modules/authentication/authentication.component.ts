@@ -9,12 +9,13 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { finalize } from 'rxjs';
-import { AuthService } from 'src/app/@services/auth/auth.service';
-import { CredentialsService } from 'src/app/@services/credentials/credentials.service';
-import { CurrencyDirective } from 'src/app/@shared/directives/currency/currency.directive';
-import { FocusTrapDirective } from 'src/app/@shared/directives/focus-trap/focus-trap.directive';
-import { CY_SELECTORS } from 'src/app/@shared/enums';
-import { IUser } from 'src/app/@shared/models/interfaces';
+
+import { AuthService } from './../../@services/auth/auth.service';
+import { CredentialsService } from './../../@services/credentials/credentials.service';
+import { CurrencyDirective } from './../../@shared/directives/currency/currency.directive';
+import { FocusTrapDirective } from './../../@shared/directives/focus-trap/focus-trap.directive';
+import { CY_SELECTORS } from './../../@shared/enums/cy-strings.enum';
+import { IUser } from './../../@shared/models/interfaces/user.interface';
 
 @UntilDestroy()
 @Component({
