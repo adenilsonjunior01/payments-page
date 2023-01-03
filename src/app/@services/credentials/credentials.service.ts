@@ -20,8 +20,14 @@ export class CredentialsService {
     this.local.setItem(ECredentialsStorage.USER, JSON.stringify(user));
   }
 
-  public get user(): IUser | null | undefined {
-    return JSON.parse(this.local.getItem(ECredentialsStorage.USER));
+  public get user(): IUser | null {
+    try {
+      const user = JSON.parse(this.local.getItem(ECredentialsStorage.USER));
+      return user;
+    } catch (error) {
+      console.error(error);
+      return null
+    }
   }
 
   public logout(): void {
