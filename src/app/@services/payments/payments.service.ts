@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPayments } from 'src/app/@shared/models/interfaces/payments.interface';
-import { environment } from 'src/environments/environment';
 
-const routes = {
+import { environment } from './../../../environments/environment';
+import { IPayments } from './../../@shared/models/interfaces/payments.interface';
+
+export const routes = {
   payments: () => `${environment.API_URL}/tasks`,
   paymentsId: (id: number) => `${environment.API_URL}/tasks/${id}`
 }

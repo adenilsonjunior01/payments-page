@@ -25,8 +25,7 @@ export class CredentialsService {
       const user = JSON.parse(this.local.getItem(ECredentialsStorage.USER));
       return user;
     } catch (error) {
-      console.error(error);
-      return null
+      return null;
     }
   }
 
